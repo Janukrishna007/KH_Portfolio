@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import theme from '../theme';
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 const HomeContainer = styled.div`
   width: 100vw;
@@ -47,7 +48,7 @@ const Nav = styled.nav`
   gap: 4rem;
 `;
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
   text-decoration: none;
   color: #fff;
   font-family: 'PokemonFireRed', sans-serif;
@@ -89,29 +90,8 @@ const PokeballImg = styled.img`
   /* Overlap the navbar border by half the image height for a cut-out effect */
 `;
 
-const MainContent = styled.main`
-  flex: 1;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
 
-const Button = styled(motion.button)`
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  
-  &:hover {
-    background-color: #0056b3;
-  }
-`;
+
 
 const HeroSection = styled.section`
   width: 100vw;
@@ -197,23 +177,9 @@ const CustomImageButton = styled.a`
   }
 `;
 
-const ResumePaintStreak = styled.img`
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 80%;
-  width: 120px;
-  z-index: 1;
-  pointer-events: none;
-`;
 
-const ResumeText = styled.span`
-  position: relative;
-  z-index: 2;
-  font-family: 'PokemonFireRed', sans-serif;
-  margin-left: 0.2rem;
-`;
+
+
 
 const ResumeNote = styled.p`
   font-size: 1.02rem;
@@ -246,15 +212,7 @@ const HeroProfileImg = styled.img`
   box-shadow: none;
 `;
 
-const SocialProofRow = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2.5rem;
-  margin: 2rem 0 1.5rem 0;
-  flex-wrap: wrap;
-`;
+
 
 const SocialLogo = styled.img`
   height: 32px;
@@ -470,67 +428,7 @@ const PikachuNote = styled.div`
   margin-bottom: 0;
 `;
 
-const FooterSection = styled.footer`
-  width: 100%;
-  background: ${theme.colors.primary};
-  color: ${theme.colors.white};
-  padding: 2.5rem 0 0.5rem 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 2rem;
-`;
 
-const FooterCTA = styled.h2`
-  font-size: 1.5rem;
-  font-family: 'PokemonFireRed', sans-serif;
-  margin-bottom: 1.2rem;
-  text-align: center;
-`;
-
-const FooterButtons = styled.div`
-  display: flex;
-  gap: 1.2rem;
-  margin-bottom: 2rem;
-`;
-
-const FooterBtn = styled.a`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: ${theme.colors.white};
-  color: ${theme.colors.primary};
-  font-weight: 700;
-  border-radius: 30px;
-  padding: 0.7rem 1.5rem;
-  font-size: 1rem;
-  text-decoration: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: background 0.2s, color 0.2s;
-  &:hover {
-    background: #ffe066;
-    color: #b8000f;
-  }
-`;
-
-const FooterIllustration = styled.img`
-  width: 120px;
-  margin-bottom: 0.5rem;
-`;
-
-const FooterCongrats = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 1.1rem;
-  font-family: 'PokemonFireRed', sans-serif;
-  margin-bottom: 0.5rem;
-`;
-
-const Heart = styled.span`
-  color: #FFD600;
-  font-size: 1.5rem;
-`;
 
 const MarqueeRow = styled.div`
   width: 100vw;
@@ -766,29 +664,22 @@ const fadeSlideUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } }
 };
-const fadeSlideLeft = {
-  hidden: { opacity: 0, x: 60 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } }
-};
-const fadeSlideRight = {
-  hidden: { opacity: 0, x: -60 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } }
-};
 const stagger = {
   visible: { transition: { staggerChildren: 0.18 } }
 };
 
 const Home = () => {
+  const location = useLocation();
   return (
     <HomeContainer>
       <Header>
         <Logo>KH ARJUN</Logo>
         <NavWrapper>
           <Nav>
-            <NavLink className="active">HOME</NavLink>
-            <NavLink>ABOUT</NavLink>
-            <NavLink>WORKS</NavLink>
-            <NavLink>CONTACT</NavLink>
+            <NavLink to="/" className={location.pathname === '/' ? 'active' : ''}>HOME</NavLink>
+            <NavLink to="/about" className={location.pathname === '/about' ? 'active' : ''}>ABOUT</NavLink>
+            <NavLink to="#">WORKS</NavLink>
+            <NavLink to="#">CONTACT</NavLink>
           </Nav>
         </NavWrapper>
         <PokeballImg src="/images/icons/images.jpg" alt="Pokeball" />
