@@ -1,0 +1,959 @@
+import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
+import theme from '../theme';
+import React from 'react';
+
+const HomeContainer = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  overflow-x: hidden;
+`;
+
+const Header = styled.header`
+  width: 100vw;
+  height: 100px;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  background-color: #d00223;
+  position: relative;
+  border-bottom: 6px solid #000;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+  z-index: 10;
+`;
+
+const Logo = styled.div`
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #fff;
+  font-family: 'PokemonFireRed', sans-serif;
+  letter-spacing: 2px;
+  margin-right: 2rem;
+`;
+
+const NavWrapper = styled.div`
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Nav = styled.nav`
+  display: flex;
+  gap: 4rem;
+`;
+
+const NavLink = styled.a`
+  text-decoration: none;
+  color: #fff;
+  font-family: 'PokemonFireRed', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  padding: 0.5rem 2.2rem;
+  border-radius: 2rem;
+  background: transparent;
+  border: 2px solid transparent;
+  transition: background 0.2s, color 0.2s, border 0.2s, transform 0.15s;
+  cursor: pointer;
+  display: inline-block;
+  &:hover {
+    background: #fff;
+    color: #d00223;
+    border: 2px solid #d00223;
+    transform: scale(1.07);
+    font-weight: bold;
+  }
+  &.active {
+    background: #900000;
+    color: #fff;
+    font-weight: bold;
+    border: 2px solid #900000;
+  }
+`;
+
+const PokeballImg = styled.img`
+  position: absolute;
+  right: 2.2rem;
+  bottom: -40px;
+  width: 80px;
+  height: 80px;
+  z-index: 100;
+  background: none;
+  pointer-events: none;
+  border: none;
+  filter: none;
+  /* Overlap the navbar border by half the image height for a cut-out effect */
+`;
+
+const MainContent = styled.main`
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Button = styled(motion.button)`
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
+
+const HeroSection = styled.section`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  padding: 3rem 0 2rem 0;
+  position: relative;
+  z-index: 2;
+`;
+
+const HeroContent = styled.div`
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+`;
+
+const HeroText = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 520px;
+  margin-top: 0;
+  text-align: center;
+`;
+
+const HeroTitle = styled.h1`
+  font-family: 'PokemonFireRed', sans-serif;
+  font-size: 2.7rem;
+  font-weight: 400;
+  color: #111;
+  margin-bottom: 1.2rem;
+  line-height: 1.1;
+  letter-spacing: 1px;
+  text-align: center;
+`;
+
+const HeroSubtitle = styled.p`
+  font-size: 1.08rem;
+  color: #222;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  margin-bottom: 2.1rem;
+  max-width: 480px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+`;
+
+const ResumeButtonAndGifRow = styled.div`
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  margin-bottom: 0.7rem;
+  position: relative;
+`;
+
+const CustomImageButton = styled.a`
+  display: inline-block;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: transform 0.18s, box-shadow 0.18s;
+  &:hover img {
+    transform: scale(1.07);
+    box-shadow: 0 4px 24px #4ade80cc;
+  }
+  img {
+    display: block;
+    width: 320px;
+    height: auto;
+    border: none;
+    transition: transform 0.18s, box-shadow 0.18s;
+  }
+`;
+
+const ResumePaintStreak = styled.img`
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 80%;
+  width: 120px;
+  z-index: 1;
+  pointer-events: none;
+`;
+
+const ResumeText = styled.span`
+  position: relative;
+  z-index: 2;
+  font-family: 'PokemonFireRed', sans-serif;
+  margin-left: 0.2rem;
+`;
+
+const ResumeNote = styled.p`
+  font-size: 1.02rem;
+  color: #111;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  margin-top: 0.7rem;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: center;
+`;
+
+const HeroImageWrapper = styled.div`
+  position: relative;
+  width: 540px;
+  height: 540px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  @media (max-width: 900px) {
+    width: 320px;
+    height: 320px;
+  }
+`;
+
+const HeroProfileImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+`;
+
+const SocialProofRow = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  margin: 2rem 0 1.5rem 0;
+  flex-wrap: wrap;
+`;
+
+const SocialLogo = styled.img`
+  height: 32px;
+  opacity: 0.7;
+`;
+
+const AboutSection = styled.section`
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const AboutText = styled.p`
+  font-size: 1.15rem;
+  color: #333;
+  margin-bottom: 0.5rem;
+`;
+
+const galleryImages = [
+  '/images/gallery/Rectangle 43.png',
+  '/images/gallery/Rectangle 44.png',
+  '/images/gallery/Rectangle 45.png',
+  '/images/gallery/Rectangle 46.png',
+  '/images/gallery/Rectangle 49.png',
+  '/images/gallery/Rectangle 50.png',
+];
+
+const GalleryRow = styled.div`
+  width: 100vw;
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 3rem auto 3.5rem auto;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  background: rgba(245, 245, 245, 0.5);
+  border-radius: 32px;
+  padding: 2rem 0;
+`;
+
+const GalleryImg = styled.img`
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 28px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  background: #fff;
+  border: 2px solid #f0f0f0;
+  transition: transform 0.18s, box-shadow 0.18s, border 0.18s;
+  &:hover {
+    transform: scale(1.08) rotate(-2deg);
+    box-shadow: 0 16px 48px #4ade8033;
+    border: 2px solid #4ade80;
+  }
+`;
+
+const SectionTitle = styled.h2`
+  font-size: 2rem;
+  color: ${theme.colors.primary};
+  margin: 2.5rem 0 1.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+  font-family: 'PokemonFireRed', sans-serif;
+  text-align: center;
+`;
+
+const PolaroidRow = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
+  margin-top: 2.5rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+const Polaroid = styled.div`
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  width: 340px;
+  padding: 1.2rem 1.2rem 2rem 1.2rem;
+  position: relative;
+  border: 2.5px solid #bbb;
+  transform: rotate(-12deg);
+  &:nth-of-type(2) { transform: rotate(12deg); }
+`;
+
+const PolaroidImg = styled.img`
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+`;
+
+const PolaroidPinImg = styled.img`
+  width: 90px;
+  height: 90px;
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  pointer-events: none;
+`;
+
+const PolaroidCaption = styled.p`
+  font-size: 0.98rem;
+  color: #333;
+  text-align: center;
+`;
+
+const DeckCard = styled.div`
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  width: 210px;
+  padding: 1.2rem 1rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const DeckImg = styled.img`
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.7rem;
+`;
+
+const DeckTitle = styled.h3`
+  font-size: 1.1rem;
+  color: ${theme.colors.primary};
+  font-family: 'PokemonFireRed', sans-serif;
+  margin-bottom: 0.3rem;
+`;
+
+const DeckDesc = styled.p`
+  font-size: 0.95rem;
+  color: #333;
+  text-align: center;
+`;
+
+const MoreWorksBtnWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 2.5rem auto;
+  position: relative;
+  width: fit-content;
+`;
+
+const PikachuImg = styled.img`
+  width: 80px;
+  height: auto;
+  position: absolute;
+  left: 0;
+  top: -20px;
+  z-index: 10;
+  filter: drop-shadow(0 18px 18px rgba(0,0,0,0.25));
+`;
+
+const MoreWorksBtn = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #b8000f 0%, #e30613 100%);
+  border: none;
+  border-radius: 30px;
+  padding: 0.3rem 3.5rem 0.5rem 3.5rem;
+  box-shadow: 0 2px 8px rgba(227, 6, 19, 0.12);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  min-width: 260px;
+  min-height: 48px;
+  position: relative;
+  margin-top: 40px;
+  &:hover {
+    background: linear-gradient(90deg, #e30613 0%, #b8000f 100%);
+    transform: scale(1.04);
+  }
+`;
+
+const MoreWorksText = styled.span`
+  font-family: 'PokemonFireRed', 'Press Start 2P', monospace;
+  font-size: 1.1rem;
+  color: #fff;
+  letter-spacing: 1px;
+  text-align: center;
+  margin: 0.2rem 0;
+`;
+
+const PikachuNote = styled.div`
+  font-family: 'PokemonFireRed', 'Press Start 2P', monospace;
+  font-size: 1.3rem;
+  color: #111;
+  text-align: center;
+  margin-top: 0.3rem;
+  margin-bottom: 0;
+`;
+
+const FooterSection = styled.footer`
+  width: 100%;
+  background: ${theme.colors.primary};
+  color: ${theme.colors.white};
+  padding: 2.5rem 0 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+`;
+
+const FooterCTA = styled.h2`
+  font-size: 1.5rem;
+  font-family: 'PokemonFireRed', sans-serif;
+  margin-bottom: 1.2rem;
+  text-align: center;
+`;
+
+const FooterButtons = styled.div`
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+`;
+
+const FooterBtn = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: ${theme.colors.white};
+  color: ${theme.colors.primary};
+  font-weight: 700;
+  border-radius: 30px;
+  padding: 0.7rem 1.5rem;
+  font-size: 1rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s;
+  &:hover {
+    background: #ffe066;
+    color: #b8000f;
+  }
+`;
+
+const FooterIllustration = styled.img`
+  width: 120px;
+  margin-bottom: 0.5rem;
+`;
+
+const FooterCongrats = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.1rem;
+  font-family: 'PokemonFireRed', sans-serif;
+  margin-bottom: 0.5rem;
+`;
+
+const Heart = styled.span`
+  color: #FFD600;
+  font-size: 1.5rem;
+`;
+
+const MarqueeRow = styled.div`
+  width: 100vw;
+  overflow: hidden;
+  margin: 2rem 0 1.5rem 0;
+  background: transparent;
+`;
+
+const MarqueeContent = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  animation: marquee 16s linear infinite;
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+`;
+
+const GifPreview = styled.img`
+  position: absolute;
+  right: -60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  z-index: 3;
+  pointer-events: none;
+`;
+
+// List of all logo filenames
+const logoFiles = [
+  '/images/logos/Svas.pro.png',
+  '/images/logos/Mask group.png',
+  '/images/logos/Mask group-1.png',
+  '/images/logos/Mask group-2.png',
+  '/images/logos/Mask group-3.png',
+  '/images/logos/Group 217.png',
+  '/images/logos/Group 482032.png',
+  '/images/logos/Group 482033.png',
+];
+
+const DesignDeckSectionTitle = styled(SectionTitle)`
+  justify-content: center !important;
+  gap: 0.7rem !important;
+  font-size: 3rem !important;
+  margin-bottom: 2.5rem;
+`;
+
+const FullWidthDesignDeckRow = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 4rem;
+  width: 100vw;
+  max-width: 1800px;
+  margin: 0 auto 2.5rem auto;
+  padding: 0 2rem;
+`;
+
+const LargeDeckCard = styled(DeckCard)`
+  width: 500px;
+  min-height: 600px;
+  padding: 2.5rem 2rem 3rem 2rem;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+`;
+
+const LargeDeckImg = styled(DeckImg)`
+  height: 320px;
+  border-radius: 22px;
+  margin-bottom: 1.5rem;
+`;
+
+// Add styled components for the Contact/CTA section
+const ContactSection = styled.section`
+  width: 100vw;
+  max-width: 1600px;
+  margin: 0 auto 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 1rem 2rem 2rem 2rem;
+  min-height: 480px;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    gap: 2rem;
+    align-items: center;
+  }
+`;
+
+const ContactLeft = styled.div`
+  flex: 1.2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2.2rem;
+`;
+
+const ContactHeading = styled.h2`
+  font-family: 'PokemonFireRed', 'Press Start 2P', monospace;
+  font-size: 2.7rem;
+  color: #111;
+  margin-bottom: 0.7rem;
+`;
+
+const ContactSub = styled.p`
+  font-family: 'PokemonFireRed', 'Press Start 2P', monospace;
+  font-size: 1.35rem;
+  color: #222;
+  margin-bottom: 0.7rem;
+  max-width: 600px;
+`;
+
+const ContactBtnWrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const PokeIcon = styled.img`
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  top: -18px;
+  right: -18px;
+  left: auto;
+  transform: none;
+  z-index: 10;
+  filter: drop-shadow(0 8px 8px rgba(0,0,0,0.18));
+`;
+
+const ContactButtonsGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.3rem 2.2rem;
+`;
+
+const ContactBtn = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'PokemonFireRed', 'Press Start 2P', monospace;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 2.2rem;
+  padding: 0.4rem 3.2rem 0.4rem 3.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.18s, transform 0.15s, box-shadow 0.15s;
+  min-width: 220px;
+  min-height: 48px;
+  margin-top: 18px;
+  position: relative;
+  z-index: 1;
+  &:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    filter: brightness(1.08);
+  }
+`;
+const GmailBtn = styled(ContactBtn)`
+  background: #ef473a;
+  color: #fff;
+`;
+const WhatsappBtn = styled(ContactBtn)`
+  background: #36d86b;
+  color: #fff;
+`;
+const LinkedInBtn = styled(ContactBtn)`
+  background: #0a7cc7;
+  color: #fff;
+`;
+const InstagramBtn = styled(ContactBtn)`
+  background: #f76ee6;
+  color: #fff;
+`;
+const ContactRight = styled.div`
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @media (max-width: 900px) {
+    justify-content: center;
+    margin-top: 2rem;
+  }
+`;
+const PixelAvatar = styled.img`
+  width: 520px;
+  height: auto;
+  image-rendering: pixelated;
+  align-self: flex-end;
+`;
+
+// Add styled footer bar with cut-corner effect
+const PixelFooter = styled.footer`
+  width: 100vw;
+  background: #e30613;
+  color: #fff;
+  font-family: 'PokemonFireRed', 'Press Start 2P', monospace;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 1.2rem 2.5rem 0.7rem 2.5rem;
+  position: relative;
+  margin-top: 0;
+  z-index: 10;
+  min-height: 90px;
+`;
+const PixelFooterRight = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: #e30613;
+  padding: 1.2rem 3.5rem 1.2rem 2.5rem;
+  border-radius: 0 0 0 48px;
+  position: absolute;
+  right: 0;
+  top: -48px;
+  font-size: 1.5rem;
+  box-shadow: -8px 8px 0 0 #e30613;
+`;
+
+// Animation variants
+const fadeSlideUp = {
+  hidden: { opacity: 0, y: 60 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } }
+};
+const fadeSlideLeft = {
+  hidden: { opacity: 0, x: 60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } }
+};
+const fadeSlideRight = {
+  hidden: { opacity: 0, x: -60 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: 'easeOut' } }
+};
+const stagger = {
+  visible: { transition: { staggerChildren: 0.18 } }
+};
+
+const Home = () => {
+  return (
+    <HomeContainer>
+      <Header>
+        <Logo>KH ARJUN</Logo>
+        <NavWrapper>
+          <Nav>
+            <NavLink className="active">HOME</NavLink>
+            <NavLink>ABOUT</NavLink>
+            <NavLink>WORKS</NavLink>
+            <NavLink>CONTACT</NavLink>
+          </Nav>
+        </NavWrapper>
+        <PokeballImg src="/images/icons/images.jpg" alt="Pokeball" />
+      </Header>
+      <motion.section variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
+        <HeroSection>
+          <HeroContent>
+            <HeroText>
+              <HeroTitle>Designing Impactful Brands,<br />Digital Products & Experiences</HeroTitle>
+              <HeroSubtitle>
+                Crafting user-focused digital experiences through creative design and strategy. Blending branding, UI/UX, and social media—powered by Figma and a passion for impact.
+              </HeroSubtitle>
+              <ResumeButtonAndGifRow>
+                <CustomImageButton href="#" download>
+                  <img src="/images/buttons/button.png" alt="Download my Resume" />
+                </CustomImageButton>
+                <GifPreview src="/images/gifs/mygif.gif" alt="GIF Preview" />
+              </ResumeButtonAndGifRow>
+              <ResumeNote>before Smeargle gets too creative with the button!</ResumeNote>
+            </HeroText>
+            <HeroImageWrapper>
+              <HeroProfileImg src="/images/hero/hero.png" alt="Profile" />
+            </HeroImageWrapper>
+          </HeroContent>
+        </HeroSection>
+      </motion.section>
+      <motion.div variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
+        <MarqueeRow>
+          <MarqueeContent style={{ minWidth: '200vw' }}>
+            {logoFiles.concat(logoFiles).map((src, idx) => (
+              <SocialLogo src={src} alt={`Logo${idx + 1}`} key={idx} />
+            ))}
+          </MarqueeContent>
+        </MarqueeRow>
+      </motion.div>
+      <motion.section variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
+        <AboutSection>
+          <AboutText className="pokemon-heading">
+          I'm K H Arjun, and I design digital experiences that are both impactful and intuitive. I focus on blending creativity with strategy to craft clean, user-centered designs that solve real problems and elevate brands. My goal is to create meaningful experiences that connect with users and drive results.
+          </AboutText>
+        </AboutSection>
+      </motion.section>
+      <motion.section variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <motion.div variants={fadeSlideUp}>
+          <GalleryRow>
+            {galleryImages.map((src, idx) => (
+              <GalleryImg
+                key={src}
+                src={src}
+                alt={`Gallery${idx + 1}`}
+                style={{
+                  marginTop: idx % 2 === 0 ? '0' : '40px',
+                  transform: `rotate(${idx % 2 === 0 ? -6 : 6}deg)`
+                }}
+              />
+            ))}
+          </GalleryRow>
+        </motion.div>
+      </motion.section>
+      <motion.section variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <SectionTitle style={{ justifyContent: 'center', gap: '0.5rem', fontSize: '2.5rem' }}>
+          <img src="/images/hero/victini.gif" alt="Victini" style={{ height: '80px', marginRight: '0.1rem', verticalAlign: 'middle' }} />
+          <span style={{ fontFamily: 'PokemonFireRed, sans-serif', color: '#E30613', fontWeight: 400 }}>Victory Log</span>
+        </SectionTitle>
+        <motion.div variants={stagger}>
+          <PolaroidRow>
+            <Polaroid>
+              <PolaroidPinImg src="/images/pins/pin1.png" alt="Pin" />
+              <PolaroidImg src="/images/victory/ANS00859 (1) 1.png" alt="Victory1" />
+              <PolaroidCaption>Recognized as the 4th Top Student of 2024 in µLearn's Discord Server, awarded by Hon. Finance Minister of Kerala, Shri. K N Balagopal.</PolaroidCaption>
+            </Polaroid>
+            <Polaroid>
+              <PolaroidPinImg src="/images/pins/pin1.png" alt="Pin" />
+              <PolaroidImg src="/images/victory/ANS00859 (1) 2.png" alt="Victory2" />
+              <PolaroidCaption>Conducted a workshop titled "Beyond Pixels" to introduce students to the design thinking process and Figma fundamentals in graphic design.</PolaroidCaption>
+            </Polaroid>
+          </PolaroidRow>
+        </motion.div>
+      </motion.section>
+      <motion.section variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <DesignDeckSectionTitle>
+          <span style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+            Design Deck
+            <img src="/images/hero/mrmime.gif" alt="Mr. Mime" style={{ height: '80px', marginLeft: '18px', verticalAlign: 'middle' }} />
+          </span>
+        </DesignDeckSectionTitle>
+        <motion.div variants={stagger}>
+          <FullWidthDesignDeckRow>
+            <LargeDeckCard>
+              <LargeDeckImg src="/images/products/Rectangle 51.png" alt="Product1" />
+              <DeckTitle>Fruigo: Fruit Roll-ups</DeckTitle>
+              <DeckDesc>Branded "Fruigo" as part of my submission for KSUM's Huddle Branding Challenge 2.0, where participants were evaluated on their creative and strategic branding skills.</DeckDesc>
+            </LargeDeckCard>
+            <LargeDeckCard>
+              <LargeDeckImg src="/images/products/Rectangle 52.png" alt="Product2" />
+              <DeckTitle>Ad Campaign</DeckTitle>
+              <DeckDesc>Designed a social media ad poster for Svas.pro, a platform connecting individuals with trusted therapists and supporting professionals in growing their practice—making mental well-being simple and accessible.</DeckDesc>
+            </LargeDeckCard>
+            <LargeDeckCard>
+              <LargeDeckImg src="/images/products/Rectangle 53.png" alt="Product3" />
+              <DeckTitle>Weeteg</DeckTitle>
+              <DeckDesc>Branded "Weeteg" to reflect its mission of delivering hands-on, industry-focused learning, as part of a content and visual identity project.</DeckDesc>
+            </LargeDeckCard>
+          </FullWidthDesignDeckRow>
+        </motion.div>
+      </motion.section>
+      <motion.div variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <MoreWorksBtnWrapper>
+          <PikachuImg src="/images/gifs/pikachu.gif" alt="Pikachu" />
+          <MoreWorksBtn href="#">
+            <MoreWorksText>View more works</MoreWorksText>
+          </MoreWorksBtn>
+        </MoreWorksBtnWrapper>
+        <PikachuNote>Pikachu believes in your good taste!</PikachuNote>
+      </motion.div>
+      <motion.section variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <ContactSection>
+          <ContactLeft>
+            <ContactHeading>Need designs that stand out?</ContactHeading>
+            <ContactSub>I craft bold, purposeful visuals tailored to your goals. Let's connect and make something amazing.</ContactSub>
+            <ContactButtonsGrid>
+              <ContactBtnWrapper>
+                <PokeIcon src="/images/gifs/charmander.gif" alt="Charmander" />
+                <GmailBtn href="#">
+                  <span>Gmail</span>
+                </GmailBtn>
+              </ContactBtnWrapper>
+              <ContactBtnWrapper>
+                <PokeIcon src="/images/gifs/bulbasaur.gif" alt="Bulbasaur" />
+                <WhatsappBtn href="#">
+                  <span>Whatsapp</span>
+                </WhatsappBtn>
+              </ContactBtnWrapper>
+              <ContactBtnWrapper>
+                <PokeIcon src="/images/gifs/squirtle.gif" alt="Squirtle" />
+                <LinkedInBtn href="#">
+                  <span>LinkedIn</span>
+                </LinkedInBtn>
+              </ContactBtnWrapper>
+              <ContactBtnWrapper>
+                <PokeIcon src="/images/gifs/mew.gif" alt="Mew" />
+                <InstagramBtn href="#">
+                  <span>Instagram</span>
+                </InstagramBtn>
+              </ContactBtnWrapper>
+            </ContactButtonsGrid>
+          </ContactLeft>
+          <ContactRight>
+            <PixelAvatar src="/images/hero/lego kh.png" alt="Pixel Avatar" />
+          </ContactRight>
+        </ContactSection>
+      </motion.section>
+      <motion.footer variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
+        <PixelFooter>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', fontFamily: 'PokemonFireRed, monospace', fontSize: '1.1rem', lineHeight: 1.4 }}>
+            <span>Pokémon sprites used on this site are for non-commercial, portfolio purposes only.</span>
+            <span>Pokémon and all related assets are © Nintendo, Game Freak, and The Pokémon Company.</span>
+          </div>
+          <PixelFooterRight>
+            Designed with <span style={{ color: '#FFD600', fontSize: '2.1rem', marginLeft: '0.3rem' }}>❤️</span>
+          </PixelFooterRight>
+        </PixelFooter>
+      </motion.footer>
+    </HomeContainer>
+  );
+};
+
+export default Home; 
