@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import theme from '../theme';
 import { useLocation } from 'react-router-dom';
 import { HomeContainer, Header, Logo, NavWrapper, Nav, NavLink, PokeballImg } from '../components/shared/StyledComponents';
+import React, { useState } from 'react';
 
 const HeroSection = styled.section`
   width: 100vw;
@@ -73,18 +74,35 @@ const CustomImageButton = styled.a`
   display: inline-block;
   border: none;
   outline: none;
+  background: transparent;
   cursor: pointer;
-  transition: transform 0.18s, box-shadow 0.18s;
+  border-radius: 48px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px #4ade8033;
+  transition: transform 0.18s, box-shadow 0.18s, filter 0.18s;
+  padding: 0;
+  margin: 0;
   &:hover img {
     transform: scale(1.07);
     box-shadow: 0 4px 24px #4ade80cc;
+    filter: brightness(1.08) drop-shadow(0 0 12px #4ade8088);
+  }
+  &:focus, &:active {
+    outline: none;
+    box-shadow: 0 0 0 3px #4ade80cc, 0 2px 16px #4ade8033;
+    filter: brightness(1.04) drop-shadow(0 0 8px #4ade8088);
+    transform: scale(0.98);
   }
   img {
     display: block;
     width: 320px;
     height: auto;
     border: none;
-    transition: transform 0.18s, box-shadow 0.18s;
+    border-radius: 48px;
+    transition: transform 0.18s, box-shadow 0.18s, filter 0.18s;
+    background: transparent;
+    margin: 0;
+    padding: 0;
   }
 `;
 
@@ -133,31 +151,41 @@ const AboutSection = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 700px) {
+    padding: 0 1rem;
+    max-width: 100%;
+  }
 `;
 
 const AboutText = styled.p`
   font-size: 1.15rem;
   color: #333;
   margin-bottom: 0.5rem;
+  text-align: center;
+  @media (max-width: 700px) {
+    font-size: 1.05rem;
+    padding: 0 0.5rem;
+    line-height: 1.6;
+    margin-bottom: 0.7rem;
+  }
 `;
 
 const galleryImages = [
   '/images/gallery/Rectangle 43.png',
   '/images/gallery/Rectangle 44.png',
   '/images/gallery/Rectangle 45.png',
-  '/images/gallery/Rectangle 46.png',
   '/images/gallery/Rectangle 49.png',
   '/images/gallery/Rectangle 50.png',
 ];
 
 const GalleryRow = styled.div`
-  width: 100vw;
   max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
   display: flex;
-  justify-content: center;
-  gap: 3rem;
-  margin: 3rem auto 3.5rem auto;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
   align-items: flex-end;
   background: rgba(245, 245, 245, 0.5);
   border-radius: 32px;
@@ -168,11 +196,12 @@ const GalleryImg = styled.img`
   width: 200px;
   height: 200px;
   object-fit: cover;
-  border-radius: 28px;
+  border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.10);
   background: #fff;
   border: 2px solid #f0f0f0;
   transition: transform 0.18s, box-shadow 0.18s, border 0.18s;
+  margin: 0;
   &:hover {
     transform: scale(1.08) rotate(-2deg);
     box-shadow: 0 16px 48px #4ade8033;
@@ -391,6 +420,13 @@ const FullWidthDesignDeckRow = styled.div`
   max-width: 1800px;
   margin: 0 auto 2.5rem auto;
   padding: 0 2rem;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    padding: 0 0.5rem;
+  }
 `;
 
 const LargeDeckCard = styled(DeckCard)`
@@ -398,6 +434,13 @@ const LargeDeckCard = styled(DeckCard)`
   min-height: 600px;
   padding: 2.5rem 2rem 3rem 2rem;
   box-shadow: 0 12px 48px rgba(0,0,0,0.12);
+  @media (max-width: 900px) {
+    width: 95vw;
+    min-width: 0;
+    max-width: 420px;
+    min-height: 400px;
+    padding: 1.2rem 0.7rem 2rem 0.7rem;
+  }
 `;
 
 const LargeDeckImg = styled(DeckImg)`
@@ -466,6 +509,12 @@ const PokeIcon = styled.img`
   transform: none;
   z-index: 10;
   filter: drop-shadow(0 8px 8px rgba(0,0,0,0.18));
+  @media (max-width: 700px) {
+    width: 28px;
+    height: 28px;
+    top: -12px;
+    right: 8px;
+  }
 `;
 
 const ContactButtonsGrid = styled.div`
@@ -547,6 +596,12 @@ const PixelFooter = styled.footer`
   margin-top: 0;
   z-index: 10;
   min-height: 90px;
+  @media (max-width: 700px) {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.2rem 1rem 1.2rem 1rem;
+    font-size: 1rem;
+  }
 `;
 const PixelFooterRight = styled.div`
   display: flex;
@@ -560,6 +615,16 @@ const PixelFooterRight = styled.div`
   top: -48px;
   font-size: 1.5rem;
   box-shadow: -8px 8px 0 0 #e30613;
+  @media (max-width: 700px) {
+    position: static;
+    border-radius: 0 0 24px 24px;
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    box-shadow: none;
+    width: 100%;
+    justify-content: flex-start;
+  }
 `;
 
 // Animation variants
@@ -571,20 +636,123 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.18 } }
 };
 
+// Hamburger animation
+const HamburgerIcon = styled.div`
+  width: 32px;
+  height: 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  span {
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: #fff;
+    border-radius: 2px;
+    margin: 3px 0;
+    transition: 0.3s;
+  }
+  &.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  &.open span:nth-child(2) {
+    opacity: 0;
+  }
+  &.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+`;
+
+// Update Hamburger button to use HamburgerIcon
+const Hamburger = styled.button`
+  display: none;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+  z-index: 200;
+  @media (max-width: 900px) {
+    display: block;
+    position: absolute;
+    right: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  &:active {
+    outline: none;
+    box-shadow: none;
+  }
+`;
+
+const MobileNav = styled.div`
+  display: none;
+  @media (max-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 100vw;
+    background: rgba(208,2,35,0.98);
+    z-index: 150;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    padding: 1.5rem 0 2rem 0;
+    gap: 2rem;
+    align-items: center;
+    animation: fadeInMenu 0.3s;
+  }
+  @keyframes fadeInMenu {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+`;
+
+const ResponsiveNavWrapper = styled(NavWrapper)`
+  @media (max-width: 900px) {
+    display: none;
+  }
+`;
+
 const Home = () => {
   const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <HomeContainer>
       <Header>
         <Logo>KH ARJUN</Logo>
-        <NavWrapper>
+        <ResponsiveNavWrapper>
           <Nav>
             <NavLink to="/" className={location.pathname === '/' ? 'active' : ''}>HOME</NavLink>
             <NavLink to="/about" className={location.pathname === '/about' ? 'active' : ''}>ABOUT</NavLink>
             <NavLink to="#">WORKS</NavLink>
             <NavLink to="#">CONTACT</NavLink>
           </Nav>
-        </NavWrapper>
+        </ResponsiveNavWrapper>
+        <Hamburger aria-label="Open menu" onClick={() => setMenuOpen(m => !m)}>
+          <HamburgerIcon className={menuOpen ? 'open' : ''}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </HamburgerIcon>
+        </Hamburger>
+        {menuOpen && (
+          <MobileNav>
+            <NavLink to="/" className={location.pathname === '/' ? 'active' : ''} onClick={() => setMenuOpen(false)}>HOME</NavLink>
+            <NavLink to="/about" className={location.pathname === '/about' ? 'active' : ''} onClick={() => setMenuOpen(false)}>ABOUT</NavLink>
+            <NavLink to="#" onClick={() => setMenuOpen(false)}>WORKS</NavLink>
+            <NavLink to="#" onClick={() => setMenuOpen(false)}>CONTACT</NavLink>
+          </MobileNav>
+        )}
         <PokeballImg src="/images/icons/images.jpg" alt="Pokeball" />
       </Header>
       <motion.section variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
