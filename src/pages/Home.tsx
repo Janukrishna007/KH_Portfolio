@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import theme from '../theme';
 import { useLocation } from 'react-router-dom';
 import { HomeContainer, Header, Logo, NavWrapper, Nav, NavLink, PokeballImg } from '../components/shared/StyledComponents';
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const HeroSection = styled.section`
   width: 100vw;
