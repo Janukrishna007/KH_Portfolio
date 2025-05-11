@@ -39,9 +39,9 @@ export const Logo = styled.div`
   transition: color 0.18s, transform 0.18s, text-shadow 0.18s;
   cursor: pointer;
   &:hover {
-    color: #FFD600;
+    color: #fff;
     transform: scale(1.06) rotate(-2deg);
-    text-shadow: 0 2px 16px #FFD60055;
+    text-shadow: none;
   }
 `;
 
