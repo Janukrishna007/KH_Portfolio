@@ -194,4 +194,47 @@ export const PixelFooterRight = styled.div`
     50% { transform: scale(1.08); }
     100% { transform: scale(1); }
   }
+`;
+
+export const ContactBtn = styled.a`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'PokemonFireRed', 'Press Start 2P', monospace;
+  font-size: 1.3rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 2.2rem;
+  padding: 0.4rem 3.2rem 0.4rem 3.2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+  min-width: 220px;
+  min-height: 48px;
+  margin-top: 18px;
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  &:focus, &:active {
+    outline: none;
+    box-shadow: none;
+  }
+`;
+
+export const GmailBtn = styled(ContactBtn)`
+  background: #ef473a;
+  color: #fff;
+`;
+export const WhatsappBtn = styled(ContactBtn)`
+  background: #36d86b;
+  color: #fff;
+`;
+export const LinkedInBtn = styled(ContactBtn)`
+  background: #0a7cc7;
+  color: #fff;
+`;
+export const InstagramBtn = styled(ContactBtn)`
+  background: #f76ee6;
+  color: #fff;
 `; 

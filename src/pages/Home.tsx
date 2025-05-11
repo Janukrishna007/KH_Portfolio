@@ -85,11 +85,6 @@ const CustomImageButton = styled.a`
   transition: transform 0.18s, box-shadow 0.18s, filter 0.18s;
   padding: 0;
   margin: 0;
-  &:hover img {
-    transform: scale(1.07);
-    box-shadow: 0 4px 24px #4ade80cc;
-    filter: brightness(1.08) drop-shadow(0 0 12px #4ade8088);
-  }
   &:focus, &:active {
     outline: none;
     box-shadow: 0 0 0 3px #4ade80cc, 0 2px 16px #4ade8033;
@@ -206,11 +201,6 @@ const GalleryImg = styled.img<{ objectPosition?: string }>`
   transition: transform 0.18s, box-shadow 0.18s, border 0.18s;
   margin: 0;
   object-position: ${props => props.objectPosition || 'center'};
-  &:hover {
-    transform: scale(1.08) rotate(-2deg);
-    box-shadow: 0 16px 48px #4ade8033;
-    border: 2px solid #4ade80;
-  }
 `;
 
 const SectionTitle = styled.h2`
@@ -342,10 +332,6 @@ const MoreWorksBtn = styled.a`
   min-height: 48px;
   position: relative;
   margin-top: 40px;
-  &:hover {
-    background: linear-gradient(90deg, #e30613 0%, #b8000f 100%);
-    transform: scale(1.04);
-  }
 `;
 
 const MoreWorksText = styled.span`
@@ -546,27 +532,38 @@ const ContactBtn = styled.a`
   margin-top: 18px;
   position: relative;
   z-index: 1;
-  &:hover {
-    transform: scale(1.07);
-    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-    filter: brightness(1.08);
-  }
 `;
 const GmailBtn = styled(ContactBtn)`
   background: #ef473a;
   color: #fff;
+  &:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  }
 `;
 const WhatsappBtn = styled(ContactBtn)`
   background: #36d86b;
   color: #fff;
+  &:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  }
 `;
 const LinkedInBtn = styled(ContactBtn)`
   background: #0a7cc7;
   color: #fff;
+  &:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  }
 `;
 const InstagramBtn = styled(ContactBtn)`
   background: #f76ee6;
   color: #fff;
+  &:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  }
 `;
 const ContactRight = styled.div`
   flex: 1;
@@ -882,25 +879,25 @@ const Home = () => {
             <ContactButtonsGrid>
               <ContactBtnWrapper>
                 <PokeIcon src="/images/gifs/charmander.gif" alt="Charmander" />
-                <GmailBtn href="mailto:kharjun48@gmail.com">
+                <GmailBtn className="GmailBtn" href="mailto:kharjun48@gmail.com">
                   <span>Gmail</span>
                 </GmailBtn>
               </ContactBtnWrapper>
               <ContactBtnWrapper>
                 <PokeIcon src="/images/gifs/bulbasaur.gif" alt="Bulbasaur" />
-                <WhatsappBtn href="http://wa.me/8848043184" target="_blank" rel="noopener noreferrer">
+                <WhatsappBtn className="WhatsappBtn" href="http://wa.me/8848043184" target="_blank" rel="noopener noreferrer">
                   <span>Whatsapp</span>
                 </WhatsappBtn>
               </ContactBtnWrapper>
               <ContactBtnWrapper>
                 <PokeIcon src="/images/gifs/squirtle.gif" alt="Squirtle" />
-                <LinkedInBtn href="http://linkedin.com/in/kharjun" target="_blank" rel="noopener noreferrer">
+                <LinkedInBtn className="LinkedInBtn" href="http://linkedin.com/in/kharjun" target="_blank" rel="noopener noreferrer">
                   <span>LinkedIn</span>
                 </LinkedInBtn>
               </ContactBtnWrapper>
               <ContactBtnWrapper>
                 <PokeIcon src="/images/gifs/mew.gif" alt="Mew" />
-                <InstagramBtn href="https://www.instagram.com/a.rjunnn._/" target="_blank" rel="noopener noreferrer">
+                <InstagramBtn className="InstagramBtn" href="https://www.instagram.com/a.rjunnn._/" target="_blank" rel="noopener noreferrer">
                   <span>Instagram</span>
                 </InstagramBtn>
               </ContactBtnWrapper>

@@ -105,3 +105,24 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+a:focus, a:active {
+  outline: none !important;
+  box-shadow: none !important;
+  background: inherit !important;
+  color: inherit !important;
+}
+
+.GmailBtn:focus, .GmailBtn:active,
+.WhatsappBtn:focus, .WhatsappBtn:active,
+.LinkedInBtn:focus, .LinkedInBtn:active,
+.InstagramBtn:focus, .InstagramBtn:active {
+  outline: none !important;
+  box-shadow: none !important;
+  background: inherit !important;
+  color: inherit !important;
+}
+
+.GmailBtn:hover, .WhatsappBtn:hover, .LinkedInBtn:hover, .InstagramBtn:hover {
+  color: #fff !important;
+}
