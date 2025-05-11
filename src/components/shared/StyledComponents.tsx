@@ -161,40 +161,6 @@ export const PixelFooter = styled.footer`
   }
 `;
 
-export const PixelFooterRight = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  background: #e30613;
-  padding: 1.2rem 3.5rem 1.2rem 2.5rem;
-  border-radius: 0 0 0 48px;
-  position: absolute;
-  right: 0;
-  top: -48px;
-  font-size: 1.5rem;
-  box-shadow: -8px 8px 0 0 #e30613;
-  transition: box-shadow 0.18s, transform 0.18s;
-  @media (max-width: 900px) {
-    position: static;
-    border-radius: 0 0 24px 24px;
-    padding: 1rem 1.5rem;
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    box-shadow: none;
-    width: 100%;
-    justify-content: flex-start;
-  }
-  &:hover {
-    box-shadow: 0 0 24px #FFD60088, -8px 8px 0 0 #e30613;
-    animation: pulse 0.7s;
-  }
-  @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-    100% { transform: scale(1); }
-  }
-`;
-
 export const ContactBtn = styled.a`
   display: flex;
   align-items: center;
