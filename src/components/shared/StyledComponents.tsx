@@ -3,15 +3,27 @@ import { Link } from 'react-router-dom';
 
 export const HomeContainer = styled.div`
   width: 100%;
+  max-width: 100vw;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #fff;
+  padding-left: 0;
+  padding-right: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  @media (max-width: 700px) {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
 `;
 
 export const Header = styled.header`
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   height: 100px;
   padding: 0 2rem;
   padding-right: 0;
@@ -23,8 +35,13 @@ export const Header = styled.header`
   box-shadow: 0 8px 16px rgba(0,0,0,0.08);
   z-index: 10;
   justify-content: space-between;
+  box-sizing: border-box;
   @media (max-width: 700px) {
     height: 80px;
+    padding: 0 1rem;
+    justify-content: center;
+    width: 100vw;
+    max-width: 100vw;
   }
 `;
 
@@ -42,6 +59,10 @@ export const Logo = styled.div`
     transform: scale(1.06) rotate(-2deg);
     text-shadow: none;
   }
+  @media (max-width: 700px) {
+    font-size: 1.3rem;
+    margin-right: 0.5rem;
+  }
 `;
 
 export const NavWrapper = styled.div`
@@ -49,6 +70,9 @@ export const NavWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 700px) {
+    justify-content: flex-end;
+  }
 `;
 
 export const Nav = styled.nav`
@@ -135,7 +159,8 @@ export const PixelFooter = styled.footer`
   font-family: 'PokemonFireRed', 'Press Start 2P', monospace;
   font-size: 1.15rem;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
   padding: 2rem 2rem 1.2rem 2rem;
   position: relative;
@@ -147,13 +172,16 @@ export const PixelFooter = styled.footer`
   line-height: 1.7;
   letter-spacing: 0.02em;
   transition: box-shadow 0.18s, transform 0.18s;
+  text-align: left;
   @media (max-width: 700px) {
     flex-direction: column;
     align-items: center;
-    padding: 1.5rem 1rem 1.5rem 1rem;
-    font-size: 1rem;
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    font-size: 0.95rem;
     text-align: center;
     border-radius: 16px 16px 0 0;
+    justify-content: center;
+    line-height: 1.5;
   }
   &:hover {
     box-shadow: 0 -6px 32px #FFD60055, 0 -2px 16px rgba(0,0,0,0.10);

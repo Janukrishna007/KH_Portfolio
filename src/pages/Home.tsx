@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import theme from '../theme';
 import { useLocation } from 'react-router-dom';
-import { HomeContainer, Header, Logo, NavWrapper, Nav, NavLink, PokeballImg } from '../components/shared/StyledComponents';
+import { HomeContainer, Header, Logo, NavWrapper, Nav, NavLink } from '../components/shared/StyledComponents';
 import { useState } from 'react';
 
 const HeroSection = styled.section`
@@ -38,6 +38,12 @@ const HeroText = styled.div`
   max-width: 520px;
   margin-top: 0;
   text-align: left;
+  @media (max-width: 700px) {
+    align-items: center;
+    text-align: center;
+    max-width: 100vw;
+    padding: 0 0.5rem;
+  }
 `;
 
 const HeroTitle = styled.h1`
@@ -51,6 +57,14 @@ const HeroTitle = styled.h1`
   text-align: left;
   width: 100%;
   max-width: none;
+  @media (max-width: 700px) {
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 0 0.5rem;
+    word-break: normal;
+    word-wrap: normal;
+    max-width: 100%;
+  }
 `;
 
 const HeroSubtitle = styled.p`
@@ -63,14 +77,28 @@ const HeroSubtitle = styled.p`
   text-align: left;
   width: 100%;
   max-width: none;
+  @media (max-width: 700px) {
+    text-align: center;
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+    word-break: normal;
+    word-wrap: normal;
+    max-width: 100%;
+  }
 `;
 
 const ResumeButtonAndGifRow = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0;
   margin-bottom: 0.7rem;
   position: relative;
+  justify-content: flex-start;
+  width: 100vw;
+  padding: 0 0.5rem;
+  @media (max-width: 700px) {
+    justify-content: center;
+  }
 `;
 
 const CustomImageButton = styled.a`
@@ -85,6 +113,10 @@ const CustomImageButton = styled.a`
   transition: transform 0.18s, box-shadow 0.18s, filter 0.18s;
   padding: 0;
   margin: 0;
+  @media (max-width: 700px) {
+    width: 90vw;
+    max-width: 340px;
+  }
   &:hover {
     transform: scale(1.07);
     box-shadow: 0 8px 32px rgba(0,0,0,0.18);
@@ -105,6 +137,10 @@ const CustomImageButton = styled.a`
     background: transparent;
     margin: 0;
     padding: 0;
+    @media (max-width: 700px) {
+      width: 100%;
+      max-width: 340px;
+    }
   }
 `;
 
@@ -116,6 +152,11 @@ const ResumeNote = styled.p`
   margin-bottom: 0;
   font-weight: 400;
   text-align: center;
+  @media (max-width: 700px) {
+    text-align: center;
+    width: 100vw;
+    padding: 0 0.5rem;
+  }
 `;
 
 const HeroImageWrapper = styled.div`
@@ -380,15 +421,13 @@ const MarqueeContent = styled.div`
 `;
 
 const GifPreview = styled.img`
-  position: absolute;
-  right: -60px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 120px;
-  height: 120px;
+  position: static;
+  width: 100px;
+  height: 100px;
   object-fit: contain;
   z-index: 3;
   pointer-events: none;
+  margin-left: -40px;
 `;
 
 
@@ -618,8 +657,10 @@ const PixelFooter = styled.footer`
   font-family: 'PokemonFireRed', 'Press Start 2P', monospace;
   font-size: 1.1rem;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   padding: 1.2rem 2.5rem 0.7rem 2.5rem;
   position: relative;
   margin-top: 0;
@@ -651,6 +692,7 @@ const HamburgerIcon = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-right: 8px;
   span {
     display: block;
     height: 4px;
@@ -680,7 +722,7 @@ const Hamburger = styled.button`
   box-shadow: none;
   cursor: pointer;
   z-index: 200;
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     display: block;
     position: absolute;
     right: 1.5rem;
@@ -688,6 +730,8 @@ const Hamburger = styled.button`
     transform: translateY(-50%);
     width: 40px;
     height: 40px;
+    padding: 0;
+    margin-right: 0;
   }
   &:focus {
     outline: none;
@@ -701,7 +745,7 @@ const Hamburger = styled.button`
 
 const MobileNav = styled.div`
   display: none;
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -723,7 +767,21 @@ const MobileNav = styled.div`
 `;
 
 const ResponsiveNavWrapper = styled(NavWrapper)`
-  @media (max-width: 900px) {
+  @media (max-width: 1000px) {
+    display: none;
+  }
+`;
+
+const PokeballImg = styled.img`
+  height: 172px;
+  width: auto;
+  margin-left: 1rem;
+  display: block;
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-30%);
+  @media (max-width: 1000px) {
     display: none;
   }
 `;
@@ -739,7 +797,7 @@ const Home = () => {
         <ResponsiveNavWrapper>
           <Nav>
             <NavLink to="/" className={location.pathname === '/' ? 'active' : ''}>HOME</NavLink>
-            <NavLink to="/about" className={location.pathname === '/about' ? 'active' : ''}>ABOUT</NavLink>
+            <NavLink to="#">ABOUT</NavLink>
             <NavLink to="#">WORKS</NavLink>
             <NavLink to="#">CONTACT</NavLink>
           </Nav>
@@ -754,7 +812,7 @@ const Home = () => {
         {menuOpen && (
           <MobileNav>
             <NavLink to="/" className={location.pathname === '/' ? 'active' : ''} onClick={() => setMenuOpen(false)}>HOME</NavLink>
-            <NavLink to="/about" className={location.pathname === '/about' ? 'active' : ''} onClick={() => setMenuOpen(false)}>ABOUT</NavLink>
+            <NavLink to="#" onClick={() => setMenuOpen(false)}>ABOUT</NavLink>
             <NavLink to="#" onClick={() => setMenuOpen(false)}>WORKS</NavLink>
             <NavLink to="#" onClick={() => setMenuOpen(false)}>CONTACT</NavLink>
           </MobileNav>
@@ -917,13 +975,13 @@ const Home = () => {
         </ContactSection>
       </motion.section>
       <motion.footer variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-        <PixelFooter style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <div style={{ fontFamily: 'PokemonFireRed, monospace', fontSize: '1.1rem', lineHeight: 1.4 }}>
+        <PixelFooter style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
+          <div style={{ fontFamily: 'PokemonFireRed, monospace', fontSize: '1.1rem', lineHeight: 1.5, marginBottom: '0.7rem' }}>
             <span>Pokémon sprites used on this site are for non-commercial, portfolio purposes only.</span>
             <br />
             <span>Pokémon and all related assets are © Nintendo, Game Freak, and The Pokémon Company.</span>
           </div>
-          <span style={{ fontFamily: 'PokemonFireRed, monospace', fontSize: '1.1rem', whiteSpace: 'nowrap' }}>
+          <span style={{ fontFamily: 'PokemonFireRed, monospace', fontSize: '1.1rem', whiteSpace: 'nowrap', marginTop: '0.7rem', display: 'block' }}>
             Designed by KH Arjun | Developed by Janukrishna A S
           </span>
         </PixelFooter>
