@@ -34,10 +34,10 @@ const HeroContent = styled.div`
 const HeroText = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   max-width: 520px;
   margin-top: 0;
-  text-align: center;
+  text-align: left;
 `;
 
 const HeroTitle = styled.h1`
@@ -48,7 +48,9 @@ const HeroTitle = styled.h1`
   margin-bottom: 1.2rem;
   line-height: 1.1;
   letter-spacing: 1px;
-  text-align: center;
+  text-align: left;
+  width: 100%;
+  max-width: none;
 `;
 
 const HeroSubtitle = styled.p`
@@ -56,10 +58,11 @@ const HeroSubtitle = styled.p`
   color: #222;
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   margin-bottom: 2.1rem;
-  max-width: 480px;
   font-weight: 400;
   line-height: 1.5;
-  text-align: center;
+  text-align: left;
+  width: 100%;
+  max-width: none;
 `;
 
 const ResumeButtonAndGifRow = styled.div`
@@ -760,7 +763,10 @@ const Home = () => {
         <HeroSection>
           <HeroContent>
             <HeroText>
-              <HeroTitle>Designing Impactful Brands,<br />Digital Products & Experiences</HeroTitle>
+              <HeroTitle>
+                <span style={{ whiteSpace: 'nowrap' }}>Designing Impactful Brands,</span><br />
+                <span style={{ whiteSpace: 'nowrap' }}>Digital Products & Experiences</span>
+              </HeroTitle>
               <HeroSubtitle>
                 Crafting user-focused digital experiences through creative design and strategy. Blending branding, UI/UX, and social media—powered by Figma and a passion for impact.
               </HeroSubtitle>
