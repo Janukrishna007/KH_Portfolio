@@ -632,29 +632,6 @@ const PixelFooter = styled.footer`
     font-size: 1rem;
   }
 `;
-const PixelFooterRight = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  background: #e30613;
-  padding: 1.2rem 3.5rem 1.2rem 2.5rem;
-  border-radius: 0 0 0 48px;
-  position: absolute;
-  right: 0;
-  top: -48px;
-  font-size: 1.5rem;
-  box-shadow: -8px 8px 0 0 #e30613;
-  @media (max-width: 700px) {
-    position: static;
-    border-radius: 0 0 24px 24px;
-    padding: 1rem 1.5rem;
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    box-shadow: none;
-    width: 100%;
-    justify-content: flex-start;
-  }
-`;
 
 
 const fadeSlideUp = {
@@ -940,12 +917,15 @@ const Home = () => {
         </ContactSection>
       </motion.section>
       <motion.footer variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-        <PixelFooter>
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', fontFamily: 'PokemonFireRed, monospace', fontSize: '1.1rem', lineHeight: 1.4 }}>
+        <PixelFooter style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div style={{ fontFamily: 'PokemonFireRed, monospace', fontSize: '1.1rem', lineHeight: 1.4 }}>
             <span>Pokémon sprites used on this site are for non-commercial, portfolio purposes only.</span>
+            <br />
             <span>Pokémon and all related assets are © Nintendo, Game Freak, and The Pokémon Company.</span>
           </div>
-          
+          <span style={{ fontFamily: 'PokemonFireRed, monospace', fontSize: '1.1rem', whiteSpace: 'nowrap' }}>
+            Designed by KH Arjun | Developed by Janukrishna A S
+          </span>
         </PixelFooter>
       </motion.footer>
     </HomeContainer>
