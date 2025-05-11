@@ -41,8 +41,9 @@ const HeroText = styled.div`
   @media (max-width: 700px) {
     align-items: center;
     text-align: center;
-    max-width: 100vw;
-    padding: 0 0.5rem;
+    max-width: 100%;
+    padding: 0 1rem;
+    overflow: hidden;
   }
 `;
 
@@ -59,11 +60,12 @@ const HeroTitle = styled.h1`
   max-width: none;
   @media (max-width: 700px) {
     text-align: center;
-    font-size: 1.3rem;
-    padding: 0 0.5rem;
+    font-size: 1.1rem;
+    padding: 0 1rem;
     word-break: normal;
     word-wrap: normal;
     max-width: 100%;
+    overflow-wrap: break-word;
   }
 `;
 
@@ -80,10 +82,11 @@ const HeroSubtitle = styled.p`
   @media (max-width: 700px) {
     text-align: center;
     font-size: 0.95rem;
-    padding: 0 0.5rem;
+    padding: 0 1rem;
     word-break: normal;
     word-wrap: normal;
     max-width: 100%;
+    overflow-wrap: break-word;
   }
 `;
 
@@ -397,8 +400,11 @@ const PikachuNote = styled.div`
   font-size: 1.3rem;
   color: #111;
   text-align: center;
-  margin-top: 0.3rem;
+  margin-top: 0.5rem;
   margin-bottom: 0;
+  @media (max-width: 700px) {
+    margin-bottom: 2.5rem;
+  }
 `;
 
 const MarqueeRow = styled.div`
@@ -491,7 +497,7 @@ const LargeDeckImg = styled(DeckImg)`
 const ContactSection = styled.section`
   width: 100vw;
   max-width: 1600px;
-  margin: 0 auto 0 auto;
+  margin: 2rem auto 0 auto;
   display: flex;
   flex-direction: row;
   align-items: flex-end;
@@ -501,10 +507,13 @@ const ContactSection = styled.section`
   position: relative;
   @media (max-width: 900px) {
     flex-direction: column;
-    padding: 0.5rem 1rem 0 1rem;
+    padding: 0.5rem 0.5rem 0 0.5rem;
     gap: 2rem;
     align-items: center;
     height: auto;
+    width: 100%;
+    overflow: hidden;
+    margin-top: 1rem;
   }
 `;
 
@@ -515,13 +524,27 @@ const ContactLeft = styled.div`
   align-items: flex-start;
   justify-content: center;
   gap: 2.2rem;
+  @media (max-width: 700px) {
+    width: 100%;
+    padding: 0 1rem;
+    align-items: center;
+    gap: 1.5rem;
+  }
 `;
 
 const ContactHeading = styled.h2`
   font-family: 'PokemonFireRed', 'Press Start 2P', monospace;
   font-size: 2.7rem;
   color: #111;
-  margin-bottom: 0.7rem;
+  margin-bottom: 1.2rem;
+  margin-top: 1rem;
+  @media (max-width: 700px) {
+    font-size: 1.8rem;
+    padding: 0 1rem;
+    width: 100%;
+    text-align: center;
+    line-height: 1.4;
+  }
 `;
 
 const ContactSub = styled.p`
@@ -530,6 +553,13 @@ const ContactSub = styled.p`
   color: #222;
   margin-bottom: 0.7rem;
   max-width: 600px;
+  @media (max-width: 700px) {
+    font-size: 1rem;
+    padding: 0 1rem;
+    width: 100%;
+    text-align: center;
+    line-height: 1.6;
+  }
 `;
 
 const ContactBtnWrapper = styled.div`
@@ -537,31 +567,45 @@ const ContactBtnWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `;
 
 const PokeIcon = styled.img`
   width: 42px;
   height: 42px;
   position: absolute;
-  top: -18px;
-  right: -18px;
+  top: -20px;
+  right: -20px;
   left: auto;
   transform: none;
   z-index: 10;
   filter: drop-shadow(0 8px 8px rgba(0,0,0,0.18));
   @media (max-width: 700px) {
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     top: -12px;
-    right: 8px;
+    right: -8px;
   }
 `;
 
 const ContactButtonsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.3rem 2.2rem;
+  gap: 0.8rem 0.8rem;
   margin-bottom: 48px;
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0 0.3rem;
+    max-width: 200px;
+    margin: 0 auto 30px auto;
+  }
 `;
 
 const ContactBtn = styled.a`
@@ -573,16 +617,24 @@ const ContactBtn = styled.a`
   font-weight: 600;
   border: none;
   border-radius: 2.2rem;
-  padding: 0.4rem 3.2rem 0.4rem 3.2rem;
+  padding: 0.4rem 2.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.10);
   cursor: pointer;
   text-decoration: none;
   transition: background 0.18s, transform 0.15s, box-shadow 0.15s;
-  min-width: 220px;
+  min-width: 180px;
   min-height: 48px;
-  margin-top: 18px;
+  margin-top: 12px;
   position: relative;
   z-index: 1;
+  @media (max-width: 700px) {
+    font-size: 0.9rem;
+    min-width: 180px;
+    width: 100%;
+    padding: 0.3rem 0.8rem;
+    min-height: 40px;
+    margin-top: 8px;
+  }
 `;
 const GmailBtn = styled(ContactBtn)`
   background: #ef473a;
@@ -655,7 +707,7 @@ const PixelFooter = styled.footer`
   background: #e30613;
   color: #fff;
   font-family: 'PokemonFireRed', 'Press Start 2P', monospace;
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -668,12 +720,41 @@ const PixelFooter = styled.footer`
   min-height: 90px;
   @media (max-width: 700px) {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     padding: 1.2rem 1rem 1.2rem 1rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 `;
 
+const CreditLine = styled.div`
+  font-family: 'PokemonFireRed, monospace';
+  font-size: 1.3rem;
+  text-align: center;
+  margin-top: 0.7rem;
+  
+  @media (max-width: 700px) {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    
+    .desktop-text {
+      display: none;
+    }
+    
+    .mobile-text {
+      display: block;
+    }
+  }
+
+  @media (min-width: 701px) {
+    .desktop-text {
+      display: block;
+    }
+    
+    .mobile-text {
+      display: none;
+    }
+  }
+`;
 
 const fadeSlideUp = {
   hidden: { opacity: 0, y: 60 },
@@ -940,8 +1021,16 @@ const Home = () => {
       <motion.section variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
         <ContactSection>
           <ContactLeft>
-            <ContactHeading>Need designs that stand out?</ContactHeading>
-            <ContactSub>I craft bold, purposeful visuals tailored to your goals. Let's connect and make something amazing.</ContactSub>
+            <ContactHeading>
+              Need designs<br />
+              that stand out?
+            </ContactHeading>
+            <ContactSub>
+              I craft bold, purposeful visuals<br />
+              tailored to your goals.<br />
+              Let's connect and make<br />
+              something amazing.
+            </ContactSub>
             <ContactButtonsGrid>
               <ContactBtnWrapper>
                 <PokeIcon src="/images/gifs/charmander.gif" alt="Charmander" />
@@ -975,15 +1064,26 @@ const Home = () => {
         </ContactSection>
       </motion.section>
       <motion.footer variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-        <PixelFooter style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-          <div style={{ fontFamily: 'PokemonFireRed, monospace', fontSize: '1.1rem', lineHeight: 1.5, marginBottom: '0.7rem' }}>
+        <PixelFooter>
+          <div style={{ 
+            fontFamily: 'PokemonFireRed, monospace', 
+            fontSize: '1.3rem', 
+            lineHeight: 1.5, 
+            marginBottom: '1rem' 
+          }}>
             <span>Pokémon sprites used on this site are for non-commercial, portfolio purposes only.</span>
             <br />
             <span>Pokémon and all related assets are © Nintendo, Game Freak, and The Pokémon Company.</span>
           </div>
-          <span style={{ fontFamily: 'PokemonFireRed, monospace', fontSize: '1.1rem', whiteSpace: 'nowrap', marginTop: '0.7rem', display: 'block' }}>
-            Designed by KH Arjun | Developed by Janukrishna A S
-          </span>
+          <CreditLine>
+            <span className="desktop-text">
+              Designed by KH Arjun | Developed by Janukrishna A S
+            </span>
+            <div className="mobile-text">
+              <div>Designed by KH Arjun</div>
+              <div>Developed by Janukrishna A S</div>
+            </div>
+          </CreditLine>
         </PixelFooter>
       </motion.footer>
     </HomeContainer>
