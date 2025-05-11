@@ -85,6 +85,10 @@ const CustomImageButton = styled.a`
   transition: transform 0.18s, box-shadow 0.18s, filter 0.18s;
   padding: 0;
   margin: 0;
+  &:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  }
   &:focus, &:active {
     outline: none;
     box-shadow: 0 0 0 3px #4ade80cc, 0 2px 16px #4ade8033;
@@ -327,11 +331,15 @@ const MoreWorksBtn = styled.a`
   box-shadow: 0 2px 8px rgba(227, 6, 19, 0.12);
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.2s, transform 0.15s;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.15s;
   min-width: 260px;
   min-height: 48px;
   position: relative;
   margin-top: 40px;
+  &:hover {
+    transform: scale(1.07);
+    box-shadow: 0 8px 32px rgba(227, 6, 19, 0.18);
+  }
 `;
 
 const MoreWorksText = styled.span`
