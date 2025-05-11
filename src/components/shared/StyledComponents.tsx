@@ -2,13 +2,12 @@ import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 export const HomeContainer = styled.div`
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   background: #fff;
-  overflow-x: hidden;
 `;
 
 export const Header = styled.header`
@@ -88,7 +87,7 @@ export const NavLink = styled(Link)`
     right: 30%;
     bottom: 8px;
     height: 3px;
-    background: #FFD600;
+    background: #E30613;
     border-radius: 2px;
     opacity: 0;
     transition: opacity 0.18s, left 0.18s, right 0.18s;
@@ -110,7 +109,7 @@ export const NavLink = styled(Link)`
 export const PokeballImg = styled.img`
   position: absolute;
   right: 2.2rem;
-  bottom: -40px;
+  bottom: -51px;
   width: 120px;
   height: 120px;
   z-index: 100;
@@ -122,7 +121,7 @@ export const PokeballImg = styled.img`
     right: 0.5rem;
     width: 90px;
     height: 90px;
-    bottom: -30px;
+    bottom: -8px;
   }
   @media (max-width: 700px) {
     display: none;

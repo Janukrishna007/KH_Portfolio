@@ -372,6 +372,7 @@ const MarqueeContent = styled.div`
   align-items: center;
   gap: 3rem;
   animation: marquee 16s linear infinite;
+  min-width: fit-content;
   @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -456,13 +457,15 @@ const ContactSection = styled.section`
   flex-direction: row;
   align-items: flex-end;
   justify-content: space-between;
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 1rem 2rem 0 2rem;
   min-height: 480px;
+  position: relative;
   @media (max-width: 900px) {
     flex-direction: column;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 1rem 0 1rem;
     gap: 2rem;
     align-items: center;
+    height: auto;
   }
 `;
 
@@ -519,6 +522,7 @@ const ContactButtonsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.3rem 2.2rem;
+  margin-bottom: 48px;
 `;
 
 const ContactBtn = styled.a`
@@ -576,18 +580,34 @@ const InstagramBtn = styled(ContactBtn)`
 const ContactRight = styled.div`
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  position: relative;
+  overflow: visible;
   @media (max-width: 900px) {
     justify-content: center;
     margin-top: 2rem;
+    align-items: flex-end;
+    height: auto;
   }
 `;
 const PixelAvatar = styled.img`
-  width: 520px;
+  width: 600px;
   height: auto;
+  max-height: 600px;
   image-rendering: pixelated;
   align-self: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 0;
+  @media (max-width: 900px) {
+    position: static;
+    left: auto;
+    transform: none;
+    margin-top: 25px;
+  }
 `;
 
 
@@ -776,7 +796,7 @@ const Home = () => {
                 Crafting user-focused digital experiences through creative design and strategy. Blending branding, UI/UX, and social media—powered by Figma and a passion for impact.
               </HeroSubtitle>
               <ResumeButtonAndGifRow>
-                <CustomImageButton href="#" download>
+                <CustomImageButton className="CustomImageButton" href="/resume.pdf" download>
                   <img src="/images/buttons/button.png" alt="Download my Resume" />
                 </CustomImageButton>
                 <GifPreview src="/images/gifs/mygif.gif" alt="GIF Preview" />
@@ -791,7 +811,7 @@ const Home = () => {
       </motion.section>
       <motion.div variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
         <MarqueeRow>
-          <MarqueeContent style={{ minWidth: '200vw' }}>
+          <MarqueeContent>
             {logoFiles.concat(logoFiles).map((src, idx) => (
               <SocialLogo src={src} alt={`Logo${idx + 1}`} key={idx} />
             ))}
@@ -858,12 +878,12 @@ const Home = () => {
               <DeckDesc>Branded "Fruigo" as part of my submission for KSUM's Huddle Branding Challenge 2.0, where participants were evaluated on their creative and strategic branding skills.</DeckDesc>
             </LargeDeckCard>
             <LargeDeckCard>
-              <LargeDeckImg src="/images/products/Rectangle 52.png" alt="Product2" />
+              <LargeDeckImg src="/images/products/Rectangle 53.png" alt="Product2" />
               <DeckTitle>Ad Campaign</DeckTitle>
               <DeckDesc>Designed a social media ad poster for Svas.pro, a platform connecting individuals with trusted therapists and supporting professionals in growing their practice—making mental well-being simple and accessible.</DeckDesc>
             </LargeDeckCard>
             <LargeDeckCard>
-              <LargeDeckImg src="/images/products/Rectangle 53.png" alt="Product3" />
+              <LargeDeckImg src="/images/products/Rectangle 52.png" alt="Product3" />
               <DeckTitle>Weeteg</DeckTitle>
               <DeckDesc>Branded "Weeteg" to reflect its mission of delivering hands-on, industry-focused learning, as part of a content and visual identity project.</DeckDesc>
             </LargeDeckCard>
@@ -873,7 +893,10 @@ const Home = () => {
       <motion.div variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
         <MoreWorksBtnWrapper>
           <PikachuImg src="/images/gifs/pikachu.gif" alt="Pikachu" />
-          <MoreWorksBtn href="#">
+          <MoreWorksBtn
+            onClick={() => window.open('http://bit.ly/kharjun-designer-portfolio')}
+            style={{ background: 'linear-gradient(90deg, #e30613 100%)' }}
+          >
             <MoreWorksText>View more works</MoreWorksText>
           </MoreWorksBtn>
         </MoreWorksBtnWrapper>
@@ -922,9 +945,7 @@ const Home = () => {
             <span>Pokémon sprites used on this site are for non-commercial, portfolio purposes only.</span>
             <span>Pokémon and all related assets are © Nintendo, Game Freak, and The Pokémon Company.</span>
           </div>
-          <PixelFooterRight>
-            Designed with <span style={{ color: '#FFD600', fontSize: '2.1rem', marginLeft: '0.3rem' }}>❤️</span>
-          </PixelFooterRight>
+          
         </PixelFooter>
       </motion.footer>
     </HomeContainer>

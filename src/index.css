@@ -126,3 +126,8 @@ a:focus, a:active {
 .GmailBtn:hover, .WhatsappBtn:hover, .LinkedInBtn:hover, .InstagramBtn:hover {
   color: #fff !important;
 }
+
+.CustomImageButton:hover {
+  transform: scale(1.07) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18) !important;
+}
