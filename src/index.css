@@ -5,6 +5,11 @@
   font-style: normal;
 }
 
+/* Custom pixel cursor for the whole site */
+body, html, * {
+  cursor: url('/images/icons/header.png') 0 0, pointer, default;
+}
+
 * {
   margin: 0;
   padding: 0;
