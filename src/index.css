@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'PokemonFireRed';
-  src: url('/assets/fonts/pokemon_fire_red.ttf') format('truetype');
+  font-family: 'Little Malio';
+  src: url('/assets/fonts/little malio.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -9,18 +9,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'PokemonFireRed', sans-serif !important;
+  font-family: 'Little Malio', sans-serif !important;
 }
 
 body {
-  font-family: 'PokemonFireRed', sans-serif !important;
+  font-family: 'Little Malio', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffffff;
 }
 
 h1, h2, h3, h4, h5, h6, .pokemon-heading {
-  font-family: 'PokemonFireRed', sans-serif !important;
+  font-family: 'Little Malio', sans-serif !important;
   letter-spacing: 1px;
 }
 

@@ -18,8 +18,7 @@ const About = () => {
         </NavWrapper>
         <PokeballImg src="/images/icons/images.jpg" alt="Pokeball" />
       </Header>
-      {/* Main About page content goes here, matching your screenshot layout */}
-      {/* ... Pixel avatar, info, experience cards, volunteering cards, Victory Log, contact, footer ... */}
+      
     </HomeContainer>
   );
 };

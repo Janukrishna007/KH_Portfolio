@@ -192,7 +192,7 @@ const GalleryRow = styled.div`
   padding: 2rem 0;
 `;
 
-const GalleryImg = styled.img`
+const GalleryImg = styled.img<{ objectPosition?: string }>`
   width: 200px;
   height: 200px;
   object-fit: cover;
@@ -202,6 +202,7 @@ const GalleryImg = styled.img`
   border: 2px solid #f0f0f0;
   transition: transform 0.18s, box-shadow 0.18s, border 0.18s;
   margin: 0;
+  object-position: ${props => props.objectPosition || 'center'};
   &:hover {
     transform: scale(1.08) rotate(-2deg);
     box-shadow: 0 16px 48px #4ade8033;
@@ -392,7 +393,7 @@ const GifPreview = styled.img`
   pointer-events: none;
 `;
 
-// List of all logo filenames
+
 const logoFiles = [
   '/images/logos/Svas.pro.png',
   '/images/logos/Mask group.png',
@@ -449,7 +450,7 @@ const LargeDeckImg = styled(DeckImg)`
   margin-bottom: 1.5rem;
 `;
 
-// Add styled components for the Contact/CTA section
+
 const ContactSection = styled.section`
   width: 100vw;
   max-width: 1600px;
@@ -581,7 +582,7 @@ const PixelAvatar = styled.img`
   align-self: flex-end;
 `;
 
-// Add styled footer bar with cut-corner effect
+
 const PixelFooter = styled.footer`
   width: 100vw;
   background: #e30613;
@@ -627,7 +628,7 @@ const PixelFooterRight = styled.div`
   }
 `;
 
-// Animation variants
+
 const fadeSlideUp = {
   hidden: { opacity: 0, y: 60 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } }
@@ -636,7 +637,7 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.18 } }
 };
 
-// Hamburger animation
+
 const HamburgerIcon = styled.div`
   width: 32px;
   height: 32px;
@@ -665,7 +666,7 @@ const HamburgerIcon = styled.div`
   }
 `;
 
-// Update Hamburger button to use HamburgerIcon
+
 const Hamburger = styled.button`
   display: none;
   background: none;
@@ -803,8 +804,9 @@ const Home = () => {
                 alt={`Gallery${idx + 1}`}
                 style={{
                   marginTop: idx % 2 === 0 ? '0' : '40px',
-                  transform: `rotate(${idx % 2 === 0 ? -6 : 6}deg)`
+                  transform: `rotate(${idx % 2 === 0 ? -6 : 6}deg)`,
                 }}
+                objectPosition={idx === 2 ? '100% center' : undefined}
               />
             ))}
           </GalleryRow>
@@ -874,25 +876,25 @@ const Home = () => {
             <ContactButtonsGrid>
               <ContactBtnWrapper>
                 <PokeIcon src="/images/gifs/charmander.gif" alt="Charmander" />
-                <GmailBtn href="#">
+                <GmailBtn href="mailto:kharjun48@gmail.com">
                   <span>Gmail</span>
                 </GmailBtn>
               </ContactBtnWrapper>
               <ContactBtnWrapper>
                 <PokeIcon src="/images/gifs/bulbasaur.gif" alt="Bulbasaur" />
-                <WhatsappBtn href="#">
+                <WhatsappBtn href="http://wa.me/8848043184" target="_blank" rel="noopener noreferrer">
                   <span>Whatsapp</span>
                 </WhatsappBtn>
               </ContactBtnWrapper>
               <ContactBtnWrapper>
                 <PokeIcon src="/images/gifs/squirtle.gif" alt="Squirtle" />
-                <LinkedInBtn href="#">
+                <LinkedInBtn href="http://linkedin.com/in/kharjun" target="_blank" rel="noopener noreferrer">
                   <span>LinkedIn</span>
                 </LinkedInBtn>
               </ContactBtnWrapper>
               <ContactBtnWrapper>
                 <PokeIcon src="/images/gifs/mew.gif" alt="Mew" />
-                <InstagramBtn href="#">
+                <InstagramBtn href="https://www.instagram.com/a.rjunnn._/" target="_blank" rel="noopener noreferrer">
                   <span>Instagram</span>
                 </InstagramBtn>
               </ContactBtnWrapper>
