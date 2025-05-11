@@ -129,7 +129,7 @@ const AboutSection = styled.section`
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -336,7 +336,7 @@ const PikachuNote = styled.div`
 const MarqueeRow = styled.div`
   width: 100vw;
   overflow: hidden;
-  margin: 2rem 0 1.5rem 0;
+  margin: 2rem 0 3.5rem 0;
   background: transparent;
 `;
 
@@ -356,8 +356,8 @@ const GifPreview = styled.img`
   right: -60px;
   top: 50%;
   transform: translateY(-50%);
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   object-fit: contain;
   z-index: 3;
   pointer-events: none;
@@ -621,7 +621,7 @@ const Home = () => {
       <motion.section variants={fadeSlideUp} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }}>
         <AboutSection>
           <AboutText className="pokemon-heading">
-          I'm K H Arjun, and I design digital experiences that are both impactful and intuitive. I focus on blending creativity with strategy to craft clean, user-centered designs that solve real problems and elevate brands. My goal is to create meaningful experiences that connect with users and drive results.
+            I'm K H Arjun, and I design digital experiences that are both impactful and intuitive. I focus on blending creativity with strategy to craft clean, user-centered designs that solve real problems and elevate brands. My goal is to create meaningful experiences that connect with users and drive results.
           </AboutText>
         </AboutSection>
       </motion.section>

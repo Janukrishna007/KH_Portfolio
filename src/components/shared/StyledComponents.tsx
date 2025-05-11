@@ -77,8 +77,8 @@ export const PokeballImg = styled.img`
   position: absolute;
   right: 2.2rem;
   bottom: -40px;
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   z-index: 100;
   background: none;
   pointer-events: none;
